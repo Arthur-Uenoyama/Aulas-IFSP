@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-08-13 Tue 14:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Mauro Jacob Honorato" />
+<meta name="generator" content="Org Mode" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+    body {
+        font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+    }
+    pre {
+        font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+    }
+    h1, h2, h3 {
+        font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+    }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org294fda7">1. Hello World</a>
+<ul>
+<li><a href="#orge65fff7">1.1. Funcionamento</a></li>
+<li><a href="#orgc755d48">1.2. Código embutido</a></li>
+</ul>
+</li>
+<li><a href="#orgae0a915">2. Variáveis</a>
+<ul>
+<li><a href="#org51ff6ff">2.1. Exercício</a></li>
+</ul>
+</li>
+<li><a href="#org257cd1c">3. Recebendo dados</a>
+<ul>
+<li><a href="#org639b3b9">3.1. Exercício</a></li>
+<li><a href="#org57b97e9">3.2. Método POST</a></li>
+<li><a href="#orga4c6ed1">3.3. Exercício</a></li>
+<li><a href="#org5e6f693">3.4. Segurança</a></li>
+</ul>
+</li>
+<li><a href="#orgece71af">4. Operadores em PHP</a>
+<ul>
+<li><a href="#orge7f463e">4.1. Aritmética em PHP</a></li>
+<li><a href="#org3df6b88">4.2. Comparação em PHP</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org294fda7" class="outline-2">
+<h2 id="org294fda7"><span class="section-number-2">1.</span> Hello World</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+As tags <code>&lt;?php</code> e <code>?&gt;</code> delimitam o código PHP dentro de um arquivo HTML. O que está dentro delas é interpretado pelo PHP.
+</p>
+
+<p>
+A função <a href="https://www.php.net/manual/pt_BR/function.echo.php">echo</a> envia uma ou mais strings para a saída.
+</p>
+
+<p>
+Salve o arquivo abaixo como <code>ola.php</code> na pasta raiz do servidor:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-php">&lt;?php
+echo "Olá, mundo!";
+?&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orge65fff7" class="outline-3">
+<h3 id="orge65fff7"><span class="section-number-3">1.1.</span> Funcionamento</h3>
+<div class="outline-text-3" id="text-1-1">
+<ol class="org-ol">
+<li>Você acessa o arquivo <code>ola.php</code> no navegador (<code>localhost/ola.php</code>).</li>
+<li>O servidor web busca o arquivo, detecta a extensão e envia o arquivo para o interpretador PHP.</li>
+<li>O PHP processa o código e gera o HTML correspondente.</li>
+<li>O servidor envia o código gerado para o navegador</li>
+<li>O navegador exibe o código na tela.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgc755d48" class="outline-3">
+<h3 id="orgc755d48"><span class="section-number-3">1.2.</span> Código embutido</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+      &lt;title&gt;Minha primeira página PHP&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+      &lt;?php
+	  echo "Olá, mundo!";
+      ?&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+<p>
+O funcionamento é o mesmo, mas o interpretador PHP não analisa código HTML.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgae0a915" class="outline-2">
+<h2 id="orgae0a915"><span class="section-number-2">2.</span> Variáveis</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Toda variável em PHP inicia com <code>$</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-php">&lt;?php
+  $idade = 21;
+  echo $idade;
+?&gt;
+</pre>
+</div>
+
+<p>
+Podemos <a href="https://www.php.net/manual/pt_BR/language.operators.string.php">concatenar</a> texto e variáveis com <code>.</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-php">&lt;?php
+  $idade = 21;
+  echo "A idade é: " . $idade;
+?&gt;
+</pre>
+</div>
+
+<p>
+Variáveis podem ser interpoladas em Strings com aspas duplas:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-php">&lt;?php
+  $idade = 21;
+  echo "A idade é: $idade";
+?&gt;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org51ff6ff" class="outline-3">
+<h3 id="org51ff6ff"><span class="section-number-3">2.1.</span> Exercício</h3>
+<div class="outline-text-3" id="text-2-1">
+<ol class="org-ol">
+<li value="1">Crie uma página PHP que calcule a área de uma pizza de 12cm de raio. Pesquise em php.net uma função PHP que retorna o valor de <code>pi</code>, use essa função na página.</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org257cd1c" class="outline-2">
+<h2 id="org257cd1c"><span class="section-number-2">3.</span> Recebendo dados</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Para receber dados em PHP usamos formulários HTML, a página abaixo envia o nome digitado pelo usuário para a página <code>processa_nome.php</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Formulário de Boas-vindas&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;form action="processa_nome.php"&gt;
+	&lt;label for="nome"&gt;Digite seu nome:&lt;/label&gt;
+	&lt;input type="text" id="nome" name="nome"&gt;
+	&lt;input type="submit" value="Enviar"&gt;
+    &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+<p>
+Os valores enviados ao PHP ficam armazenados no vetor associativo $_GET. Para imprimir uma mensagem com o nome enviado podemos salvar o código abaixo na página <code>processa_nome.php</code>:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;?php
+// Recebe o nome enviado pelo formulário
+$nome = $_GET['nome'];
+
+// Exibe a mensagem de boas-vindas
+echo "&lt;h1&gt;Olá, $nome!&lt;/h1&gt;";
+?&gt;  
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org639b3b9" class="outline-3">
+<h3 id="org639b3b9"><span class="section-number-3">3.1.</span> Exercício</h3>
+<div class="outline-text-3" id="text-3-1">
+<ol class="org-ol">
+<li value="2">Crie uma página PHP que recebe o raio de uma pizza e calcule a área da pizza. Continue usando <code>pi()</code>.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org57b97e9" class="outline-3">
+<h3 id="org57b97e9"><span class="section-number-3">3.2.</span> Método POST</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+O envio dos dados do formulário por padrão é feito com o método GET:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;form action="processa_nome.php"&gt;
+</pre>
+</div>
+
+<p>
+Ou assim:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;form action="processa_nome.php" method="get"&gt;
+</pre>
+</div>
+
+<p>
+Nesse caso, os dados aparecem na linha de endereço do navegador.
+</p>
+
+<p>
+Para enviar os dados no corpo da requisição e não na linha de endereço usamos o método post:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;form action="processa_nome.php" method="post"&gt;
+</pre>
+</div>
+
+<p>
+Agora os dados chegarão no vetor $_POST e não no vetor $_GET.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orga4c6ed1" class="outline-3">
+<h3 id="orga4c6ed1"><span class="section-number-3">3.3.</span> Exercício</h3>
+<div class="outline-text-3" id="text-3-3">
+<ol class="org-ol">
+<li value="3">Ajuste a página PHP que recebe o raio de uma pizza e calcula a área da pizza para usar o método post no formulário de envio.</li>
+</ol>
+</div>
+</div>
+
+
+<div id="outline-container-org5e6f693" class="outline-3">
+<h3 id="org5e6f693"><span class="section-number-3">3.4.</span> Segurança</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Para evitar ataques <a href="https://pt.wikipedia.org/wiki/Cross-site_scripting">XSS</a>, onde um usuário mal-intencionado injeta códigos JavaScript em um campo texto usamos a função <code>filter_var</code> assim:
+</p>
+
+<pre class="example">
+$nome = filter_var($_POST['nome'], FILTER_SANITIZE_STRING);
+</pre>
+
+<p>
+Como <code>filter_var</code> retorna false se houver falha no filtro, precisamos usar <code>empty</code> para verificar se a variável <code>$nome</code> ficou vazia, o código completo fica assim:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-html">&lt;?php
+if (isset($_POST['nome'])) {
+    $nome = filter_var($_POST['nome'], FILTER_SANITIZE_STRING);
+    if (!empty($nome)) {
+	echo "&lt;h1&gt;Olá, $nome!&lt;/h1&gt;";
+    } else {
+	echo "Por favor, digite seu nome.";
+    }
+} else {
+    echo "Erro ao enviar os dados.";
+}
+?&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div class="outline-3">
+<h3><span class="section-number-3">3.4.</span> Exercício</h3>
+<div class="outline-text-3" >
+<ol class="org-ol">
+<li value="4">Exercício: Crie uma página PHP que calcula o IMC, receba os dados com $_POST e use  filter_var:</li>
+</ol>
+</div>
+</div>
+
+
+</body>
+</html>
