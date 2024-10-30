@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-10-29 Tue 16:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Mauro Jacob Honorato" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org8d437c3">1. Sistema de Administração de Medicamentos</a>
+<ul>
+<li><a href="#org10478d3">1.1. Funcionalidades Principais:</a></li>
+<li><a href="#orge8801ea">1.2. Cadastro de médicos:</a></li>
+<li><a href="#org5bbf6e1">1.3. Exercícios</a></li>
+<li><a href="#orgde2a5c2">1.4. Cadastro de pacientes:</a></li>
+<li><a href="#org1881aec">1.5. Exercícios</a></li>
+<li><a href="#orgf8d0b10">1.6. Cadastro de Receitas Médicas:</a></li>
+<li><a href="#org11910a2">1.7. Exercício</a></li>
+<li><a href="#org02ec24a">1.8. Cadastro de Enfermeiros:</a></li>
+<li><a href="#orgbe5fddf">1.9. Exercício</a></li>
+<li><a href="#org828dd4f">1.10. O sistema deve permitir ao enfermeiro ver as receitas pendentes:</a></li>
+<li><a href="#org3f29a26">1.11. Exercício</a></li>
+<li><a href="#org4372810">1.12. O sistema deve permitir ao enfermeiro registrar uma administração:</a></li>
+<li><a href="#org31e23ba">1.13. Exercício</a></li>
+<li><a href="#org79ac0e5">1.14. O sistema deve conter ao menos as seguintes tabelas:</a></li>
+<li><a href="#org5627eca">1.15. Exercício</a></li>
+<li><a href="#orgf9b771e">1.16. Envio</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org8d437c3" class="outline-2">
+<h2 id="org8d437c3"><span class="section-number-2">1.</span> Sistema de Administração de Medicamentos</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+O sistema visa auxiliar a gestão de medicamentos em um ambiente hospitalar, facilitando o trabalho de médicos e enfermeiros e garantindo a segurança dos pacientes.
+</p>
+</div>
+
+<div id="outline-container-org10478d3" class="outline-3">
+<h3 id="org10478d3"><span class="section-number-3">1.1.</span> Funcionalidades Principais:</h3>
+<div class="outline-text-3" id="text-1-1">
+<dl class="org-dl">
+<dt>Cadastro de usuários</dt><dd>Permite o cadastro de médicos e enfermeiros, com seus respectivos dados de identificação e acesso ao sistema.</dd>
+<dt>Cadastro de pacientes</dt><dd>Realiza o registro de pacientes, com um leito específico.</dd>
+<dt>Prescrição de medicamentos</dt><dd>Permite aos médicos prescrever medicamentos para os pacientes, definindo a dosagem, e a data e hora de administração.</dd>
+<dt>Gerenciamento de receitas</dt><dd>Permite aos enfermeiros visualizarem as receitas pendentes e registrarem a administração dos medicamentos.</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-orge8801ea" class="outline-3">
+<h3 id="orge8801ea"><span class="section-number-3">1.2.</span> Cadastro de médicos:</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Implemente um formulário de cadastro para médicos, coletando as seguintes informações:
+</p>
+
+<p>
+Nome, Especialidade, CRM, usuario, senha
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5bbf6e1" class="outline-3">
+<h3 id="org5bbf6e1"><span class="section-number-3">1.3.</span> Exercícios</h3>
+<div class="outline-text-3" id="text-1-3">
+<ol class="org-ol">
+<li>Crie a página que recebe os dados do médico e salva na tabela medicos.</li>
+<li>Crie a página de login de um médico. Guarde em $_SESSION a informação de que é um médico.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgde2a5c2" class="outline-3">
+<h3 id="orgde2a5c2"><span class="section-number-3">1.4.</span> Cadastro de pacientes:</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+O sistema deve permitir o cadastro de um paciente por médicos e enfermeiros logados inserindo os seguintes dados do paciente:
+</p>
+
+<p>
+Nome, Leito
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1881aec" class="outline-3">
+<h3 id="org1881aec"><span class="section-number-3">1.5.</span> Exercícios</h3>
+<div class="outline-text-3" id="text-1-5">
+<ol class="org-ol">
+<li value="3">Crie a página que cadastra um paciente na tabela pacientes.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgf8d0b10" class="outline-3">
+<h3 id="orgf8d0b10"><span class="section-number-3">1.6.</span> Cadastro de Receitas Médicas:</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+Implemente usando formulário uma página para que os médicos possam cadastrar novas receitas, contendo os seguintes campos:
+</p>
+
+<p>
+Nome do paciente, Nome do medicamento, Data da administração, Hora da administração, Dose.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org11910a2" class="outline-3">
+<h3 id="org11910a2"><span class="section-number-3">1.7.</span> Exercício</h3>
+<div class="outline-text-3" id="text-1-7">
+<ol class="org-ol">
+<li value="4">Crie a página que recebe o nome do paciente e verifica se o paciente já foi cadastrado, se foi permita o cadastro de uma receita médica. Caso contrário, o médico deve cadastrar o paciente.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org02ec24a" class="outline-3">
+<h3 id="org02ec24a"><span class="section-number-3">1.8.</span> Cadastro de Enfermeiros:</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+Implemente um formulário para o cadastro de novos enfermeiros, coletando as seguintes informações:
+</p>
+
+<p>
+Nome, COREN, usuario, senha
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgbe5fddf" class="outline-3">
+<h3 id="orgbe5fddf"><span class="section-number-3">1.9.</span> Exercício</h3>
+<div class="outline-text-3" id="text-1-9">
+<ol class="org-ol">
+<li value="5">Crie a página que recebe os dados do enfermeiro e salva na tabela enfermeiros.</li>
+<li>Crie a página de login de um enfermeiro. Guarde em $_SESSION a informação de que é um enfermeiro.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org828dd4f" class="outline-3">
+<h3 id="org828dd4f"><span class="section-number-3">1.10.</span> O sistema deve permitir ao enfermeiro ver as receitas pendentes:</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+(Data, Hora, Leito)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3f29a26" class="outline-3">
+<h3 id="org3f29a26"><span class="section-number-3">1.11.</span> Exercício</h3>
+<div class="outline-text-3" id="text-1-11">
+<ol class="org-ol">
+<li value="7">Crie a página que mostra todas as receitas pendentes de administração.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org4372810" class="outline-3">
+<h3 id="org4372810"><span class="section-number-3">1.12.</span> O sistema deve permitir ao enfermeiro registrar uma administração:</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+Nome do paciente, Nome do medicamento, Data da administração, Hora da administração, Dose, Data e Hora do registro.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org31e23ba" class="outline-3">
+<h3 id="org31e23ba"><span class="section-number-3">1.13.</span> Exercício</h3>
+<div class="outline-text-3" id="text-1-13">
+<ol class="org-ol">
+<li value="8">A página que mostra todas as receitas deve permitir ao usuário clicar em uma e registrar a administração da receita.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-org79ac0e5" class="outline-3">
+<h3 id="org79ac0e5"><span class="section-number-3">1.14.</span> O sistema deve conter ao menos as seguintes tabelas:</h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+medicos, pacientes, enfermeiros, receitas, administracoes.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5627eca" class="outline-3">
+<h3 id="org5627eca"><span class="section-number-3">1.15.</span> Exercício</h3>
+<div class="outline-text-3" id="text-1-15">
+<ol class="org-ol">
+<li value="9">Exporte o banco de dados SQL.</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgf9b771e" class="outline-3">
+<h3 id="orgf9b771e"><span class="section-number-3">1.16.</span> Envio</h3>
+<div class="outline-text-3" id="text-1-16">
+<p>
+<a href="https://forms.gle/byWTpKRWMca2h6Ab6">https://forms.gle/byWTpKRWMca2h6Ab6</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mauro Jacob Honorato</p>
+<p class="date">Created: 2024-10-29 Tue 16:09</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
