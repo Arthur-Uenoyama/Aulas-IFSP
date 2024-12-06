@@ -1,35 +1,30 @@
 <?php
 session_start();
-include 'conexao.php'; // Inclui o arquivo de conexão
+include 'conexao.php';
 
 $erro = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['cadastrar'])) {
-        // Escapar valores para evitar SQL Injection
         $nome = mysqli_real_escape_string($conn, $_POST['nome']);
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $senha = mysqli_real_escape_string($conn, $_POST['senha']);
         $confirmar_senha = mysqli_real_escape_string($conn, $_POST['confirmar_senha']);
+        $is_admin = isset($_POST['is_admin']) ? 1 : 0;
 
-        // Verificar se as senhas são iguais
         if ($senha !== $confirmar_senha) {
             $erro = "As senhas não coincidem.";
         } else {
-            // Criptografar a senha
             $senha_criptografada = hash('sha256', $senha);
 
-            // Verificar se o email já está cadastrado
             $sql = "SELECT * FROM usuarios WHERE email = '$email'";
             $result = mysqli_query($conn, $sql);
 
             if (mysqli_num_rows($result) > 0) {
                 $erro = "Este e-mail já está cadastrado.";
             } else {
-                // Inserir novo usuário no banco
-                $sql_insert = "INSERT INTO usuarios (nome, email, senha) VALUES ('$nome', '$email', '$senha_criptografada')";
+                $sql_insert = "INSERT INTO usuarios (nome, email, senha, is_admin) VALUES ('$nome', '$email', '$senha_criptografada', $is_admin)";
                 if (mysqli_query($conn, $sql_insert)) {
-                    // Efetuar login automaticamente após cadastro
                     $sql_login = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha_criptografada'";
                     $result_login = mysqli_query($conn, $sql_login);
 
@@ -37,7 +32,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         $usuario = mysqli_fetch_assoc($result_login);
                         $_SESSION['usuario_id'] = $usuario['id'];
                         $_SESSION['usuario'] = $usuario['nome'];
-                        header('Location: item_lance.php'); // Redireciona para página de itens
+                        if ($usuario['is_admin'] == 0) {
+                            header('Location: itens_abertos.php');
+                        } else {
+                            header('Location: item_lance.php');
+                        }
                         exit;
                     } else {
                         $erro = "Erro ao fazer login após cadastro.";
@@ -48,14 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     } elseif (isset($_POST['login'])) {
-        // Realizar login
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $senha = mysqli_real_escape_string($conn, $_POST['senha']);
-
-        // Criptografar a senha
         $senha_criptografada = hash('sha256', $senha);
-
-        // Verificar login
         $sql = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha_criptografada'";
         $result = mysqli_query($conn, $sql);
 
@@ -63,7 +57,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $usuario = mysqli_fetch_assoc($result);
             $_SESSION['usuario_id'] = $usuario['id'];
             $_SESSION['usuario'] = $usuario['nome'];
-            header('Location: item_lance.php'); // Redireciona para página de itens
+
+            if ($usuario['is_admin'] == 0) {
+                header('Location: itens_abertos.php');
+            } else {
+                header('Location: item_lance.php');
+            }
             exit;
         } else {
             $erro = "E-mail ou senha inválidos.";
@@ -141,7 +140,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </nav>
     <div class="container">
         <div class="form-container">
-            <div class="form-section cadastro active">
+            <div class="form-section login active">
+                <h2>Login</h2>
+                
+                <?php if (!empty($erro)): ?>
+                    <div class="alert alert-danger"><?= $erro ?></div>
+                <?php endif; ?>
+
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="email">E-mail:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha:</label>
+                        <input type="password" class="form-control" id="senha" name="senha" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" name="login">Entrar</button>
+                </form>
+                <p class="mt-3 text-center">Ainda não tem uma conta? <a href="javascript:void(0)" class="toggle-form" data-target=".cadastro">Cadastre-se</a></p>
+            </div>
+            <div class="form-section cadastro">
                 <h2>Cadastro de Usuário</h2>
                 
                 <?php if (!empty($erro)): ?>
@@ -165,29 +184,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <label for="confirmar_senha">Confirmar Senha:</label>
                         <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha" required>
                     </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="is_admin" name="is_admin">
+                        <label class="form-check-label" for="is_admin">Tornar administrador</label>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-block" name="cadastrar">Cadastrar</button>
                 </form>
                 <p class="mt-3 text-center">Já tem uma conta? <a href="javascript:void(0)" class="toggle-form" data-target=".login">Faça login</a></p>
-            </div>
-            <div class="form-section login">
-                <h2>Login</h2>
-                
-                <?php if (!empty($erro)): ?>
-                    <div class="alert alert-danger"><?= $erro ?></div>
-                <?php endif; ?>
-
-                <form method="POST">
-                    <div class="form-group">
-                        <label for="email">E-mail:</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="senha">Senha:</label>
-                        <input type="password" class="form-control" id="senha" name="senha" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block" name="login">Entrar</button>
-                </form>
-                <p class="mt-3 text-center">Ainda não tem uma conta? <a href="javascript:void(0)" class="toggle-form" data-target=".cadastro">Cadastre-se</a></p>
             </div>
         </div>
     </div>
