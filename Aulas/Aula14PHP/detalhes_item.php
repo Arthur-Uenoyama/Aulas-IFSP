@@ -100,13 +100,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="cadastro_usuario.php">Login</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="item_lance.php">Cadastrar Item</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="itens_abertos.php">Itens Abertos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="logout.php">Logout</a>
             </li>
         </ul>
     </div>
