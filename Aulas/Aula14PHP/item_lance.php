@@ -2,22 +2,18 @@
 session_start();
 include 'conexao.php';
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['usuario_id'])) {
     header('Location: cadastro_usuario.php');
     exit();
 }
 
-// Recuperar o ID do usuário logado
 $usuario_id = $_SESSION['usuario_id'];
 
-// Verifica se o usuário logado é um administrador
 $sql_admin = "SELECT is_admin FROM usuarios WHERE id = '$usuario_id'";
 $result_admin = mysqli_query($conn, $sql_admin);
 $user_data = mysqli_fetch_assoc($result_admin);
-$is_admin = $user_data['is_admin'];  // Se for 1, é admin, se for 0, não é admin
+$is_admin = $user_data['is_admin'];
 
-// Cadastro de item
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nome = $_POST['nome'];
     $minimo = $_POST['minimo'];
