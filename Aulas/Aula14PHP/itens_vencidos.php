@@ -9,13 +9,12 @@ if (!isset($_SESSION['usuario_id'])) {
 
 $usuario_id = $_SESSION['usuario_id'];
 
-$sql = "SELECT * FROM itens WHERE vencedor_id = ?";
-$stmt = mysqli_prepare($conn, $sql);
-mysqli_stmt_bind_param($stmt, 'i', $usuario_id);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
+$sql = "SELECT * FROM itens WHERE vencedor = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('i', $usuario_id);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -38,9 +37,11 @@ $result = mysqli_stmt_get_result($stmt);
         .navbar {
             background-color: #007bff;
         }
+
         .navbar .navbar-nav .nav-link {
             color: white !important;
         }
+
         .navbar .navbar-brand {
             color: white !important;
         }
@@ -58,45 +59,42 @@ $result = mysqli_stmt_get_result($stmt);
         <a class="navbar-brand" href="index.php">Leilão</a>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="cadastro_usuario.php">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="item_lance.php">Cadastrar Item</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="itens_abertos.php">Itens Abertos</a>
-                </li>
+                <?php if (!isset($_SESSION['usuario_id'])): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cadastro_usuario.php">Login</a>
+                    </li>
+                <?php else: ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="itens_abertos.php">Itens Abertos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="itens_vencidos.php">Itens Vencidos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.php">Logout</a>
+                    </li>
+                <?php endif; ?>
             </ul>
         </div>
     </nav>
-
     <div class="container mt-5">
         <h2>Itens Vencidos</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Lance Final</th>
-                    <th>Descrição</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($item = mysqli_fetch_assoc($result)): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($item['nome']) ?></td>
-                        <td>R$ <?= number_format($item['lance_final'], 2, ',', '.') ?></td>
-                        <td><?= htmlspecialchars($item['descricao']) ?></td>
-                    </tr>
+        <?php if ($result->num_rows > 0): ?>
+            <ul class="list-group">
+                <?php while ($item = $result->fetch_assoc()): ?>
+                    <li class="list-group-item">
+                        <strong><?= htmlspecialchars($item['nome']) ?></strong> - 
+                        Lance Mínimo: R$ <?= number_format($item['minimo'], 2, ',', '.') ?>
+                    </li>
                 <?php endwhile; ?>
-            </tbody>
-        </table>
+            </ul>
+        <?php else: ?>
+            <p>Você ainda não venceu nenhum leilão.</p>
+        <?php endif; ?>
     </div>
-
     <footer>
         <p>&copy; 2024 Sistema de Leilão. Todos os direitos reservados.</p>
     </footer>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
